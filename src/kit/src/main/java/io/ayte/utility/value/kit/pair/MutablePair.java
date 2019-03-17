@@ -10,22 +10,22 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class MutablePair<F, S> implements AmplePair<F, S> {
-    private F first;
-    private S second;
+public class MutablePair<A, B> implements AmplePair<A, B> {
+    private A first;
+    private B second;
 
     @Override
-    public <V> MutablePair<V, S> withFirst(V value) {
-        return new MutablePair<>(value, second);
+    public <A1> MutablePair<A1, B> withFirst(A1 first) {
+        return new MutablePair<>(first, second);
     }
 
     @Override
-    public <V> MutablePair<F, V> withSecond(V value) {
-        return new MutablePair<>(first, value);
+    public <B1> MutablePair<A, B1> withSecond(B1 second) {
+        return new MutablePair<>(first, second);
     }
 
     @Override
-    public MutablePair<S, F> reverse() {
+    public MutablePair<B, A> reverse() {
         return new MutablePair<>(second, first);
     }
 }

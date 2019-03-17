@@ -1,11 +1,15 @@
 package io.ayte.utility.value.kit;
 
 import io.ayte.utility.value.api.AmplePair;
+import io.ayte.utility.value.api.Pair;
 import io.ayte.utility.value.kit.pair.ImmutablePair;
 import io.ayte.utility.value.kit.pair.MutablePair;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+/**
+ * Factory class for {@link Pair} interface.
+ */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Pairs {
     public static <F, S> AmplePair<F, S> immutable(F first, S second) {

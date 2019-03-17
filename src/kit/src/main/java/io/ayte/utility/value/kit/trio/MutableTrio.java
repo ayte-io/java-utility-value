@@ -10,33 +10,38 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class MutableTrio<F, S, T> implements AmpleTrio<F, S, T> {
-    private F first;
-    private S second;
-    private T third;
+public class MutableTrio<A, B, C> implements AmpleTrio<A, B, C> {
+    private A first;
+    private B second;
+    private C third;
 
     @Override
-    public <V> MutableTrio<V, S, T> withFirst(V value) {
-        return new MutableTrio<>(value, second, third);
+    public <A1> MutableTrio<A1, B, C> withFirst(A1 first) {
+        return new MutableTrio<>(first, second, third);
     }
 
     @Override
-    public <V> MutableTrio<F, V, T> withSecond(V value) {
-        return new MutableTrio<>(first, value, third);
+    public <B1> MutableTrio<A, B1, C> withSecond(B1 second) {
+        return new MutableTrio<>(first, second, third);
     }
 
     @Override
-    public <V> MutableTrio<F, S, V> withThird(V value) {
-        return new MutableTrio<>(first, second, value);
+    public <C1> MutableTrio<A, B, C1> withThird(C1 third) {
+        return new MutableTrio<>(first, second, third);
     }
 
     @Override
-    public MutableTrio<T, F, S> rotate() {
+    public MutableTrio<C, A, B> rollForward() {
         return new MutableTrio<>(third, first, second);
     }
 
     @Override
-    public MutableTrio<T, S, F> reverse() {
+    public MutableTrio<B, C, A> rollBackward() {
+        return new MutableTrio<>(second, third, first);
+    }
+
+    @Override
+    public MutableTrio<C, B, A> reverse() {
         return new MutableTrio<>(third, second, first);
     }
 }

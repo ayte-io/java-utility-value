@@ -1,14 +1,16 @@
 # Ayte :: Utility :: Value
 
 ![CircleCI branch](https://img.shields.io/circleci/project/github/ayte-io/java-utility-value/master.svg?style=flat-square)
-![Bintray](https://img.shields.io/bintray/v/ayte/maven/io.ayte.utility.value.svg?style=flat-square)
-![SonarQube tech debt](https://img.shields.io/sonar/https/sonarcloud.io/io.ayte.utility:value/tech_debt.svg?style=flat-square)
+![Maven Central](https://img.shields.io/maven-central/v/io.ayte.utility/value.svg?style=flat-square)
+![SonarQube tech debt](https://img.shields.io/sonar/https/sonarcloud.io/io.ayte.utility:value/sqale_index.svg?style=flat-square)
 ![Scrutinizer code quality](https://img.shields.io/scrutinizer/g/ayte-io/java-utility-value.svg?style=flat-square)
-![Code Climate issues](https://img.shields.io/codeclimate/issues/ayte-io/java-utility-value.svg?style=flat-square)
 
 This project contains utility value classes that are commonly used 
 (Pair, Trio, etc.) and helper classes with static methods to reduce
 common boilerplate.
+
+See [Utility](https://github.com/ayte-io/java-utility) project for 
+better understanding.
 
 ## Coordinates
 

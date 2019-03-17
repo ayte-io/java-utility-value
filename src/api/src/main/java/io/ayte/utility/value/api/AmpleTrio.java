@@ -6,59 +6,75 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 /**
- * Extended {@link Trio} with bunch of helper methods.
+ * Extended {@link Trio} with helper methods.
+ *
+ * @see io.ayte.utility.value.api
  */
-public interface AmpleTrio<F, S, T> extends Trio<F, S, T> {
-    AmpleTrio<F, S, T> setFirst(F value);
-    AmpleTrio<F, S, T> setSecond(S second);
-    AmpleTrio<F, S, T> setThird(T third);
+public interface AmpleTrio<A, B, C> extends Trio<A, B, C> {
+    AmpleTrio<A, B, C> setFirst(A value);
+    AmpleTrio<A, B, C> setSecond(B second);
+    AmpleTrio<A, B, C> setThird(C third);
 
     /**
+     * @param first Replacement value.
+     * @param <A1> Replacement type.
+     *
      * @return New {@link AmpleTrio} (regardless whether it called on
      * mutable or immutable implementation) with first value set to
      * provided argument.
      */
-    <V> AmpleTrio<V, S, T> withFirst(V value);
+    <A1> AmpleTrio<A1, B, C> withFirst(A1 first);
 
     /**
+     * @param second Replacement value.
+     * @param <B1> Replacement type.
+     *
      * @return New {@link AmpleTrio} (regardless whether it called on
      * mutable or immutable implementation) with second value set to
      * provided argument.
      */
-    <V> AmpleTrio<F, V, T> withSecond(V value);
+    <B1> AmpleTrio<A, B1, C> withSecond(B1 second);
 
     /**
+     * @param third Replacement value.
+     * @param <C1> Replacement type.
+     *
      * @return New {@link AmpleTrio} (regardless whether it called on
      * mutable or immutable implementation) with third value set to
      * provided argument.
      */
-    <V> AmpleTrio<F, S, V> withThird(V value);
+    <C1> AmpleTrio<A, B, C1> withThird(C1 third);
 
-
-    default AmpleTrio<T, F, S> rotate() {
+    default AmpleTrio<C, A, B> rollForward() {
         return withFirst(getThird())
                 .withSecond(getFirst())
                 .withThird(getSecond());
     }
 
-    default AmpleTrio<T, S, F> reverse() {
+    default AmpleTrio<B, C, A> rollBackward() {
+        return withFirst(getSecond())
+                .withSecond(getThird())
+                .withThird(getFirst());
+    }
+
+    default AmpleTrio<C, B, A> reverse() {
         return withFirst(getThird())
                 .withThird(getFirst());
     }
 
-    default <F1> AmpleTrio<F1, S, T> mapFirst(@NonNull Function<? super F, ? extends F1> transformer) {
+    default <A1> AmpleTrio<A1, B, C> mapFirst(@NonNull Function<? super A, ? extends A1> transformer) {
         return withFirst(transformer.apply(getFirst()));
     }
 
-    default <S1> AmpleTrio<F, S1, T> mapSecond(@NonNull Function<? super S, ? extends S1> transformer) {
+    default <B1> AmpleTrio<A, B1, C> mapSecond(@NonNull Function<? super B, ? extends B1> transformer) {
         return withSecond(transformer.apply(getSecond()));
     }
 
-    default <T1> AmpleTrio<F, S, T1> mapThird(@NonNull Function<? super T, ? extends T1> transformer) {
+    default <C1> AmpleTrio<A, B, C1> mapThird(@NonNull Function<? super C, ? extends C1> transformer) {
         return withThird(transformer.apply(getThird()));
     }
 
-    default Stream<AmpleTrio<F, S, T>> stream() {
+    default Stream<AmpleTrio<A, B, C>> stream() {
         return Stream.of(this);
     }
 }

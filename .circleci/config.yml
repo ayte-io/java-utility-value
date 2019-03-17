@@ -39,15 +39,13 @@ jobs:
       - store_artifacts:
           path: target/site/allure
           destination: Report/Allure
-
-  publish:
+  stage:
     docker:
-      - image: circleci/openjdk:11.0
+        - image: circleci/openjdk:11.0
     working_directory: /tmp/workspace
     steps:
       - attach_workspace:
           at: /tmp/workspace
-      - run: sudo apt-get update
       - run: |
           echo 'Package: libassuan0' | sudo tee /etc/apt/preferences.d/libassuan0
           echo 'Pin: release n=stretch-backports' | sudo tee -a /etc/apt/preferences.d/libassuan0
@@ -58,7 +56,25 @@ jobs:
       - run: rm /tmp/key
       - run: sudo ln -s $(which gpg) /usr/local/bin/gpg2
       - mvnw/circle:
-          command: package gpg:sign deploy
+          command: package gpg:sign nexus-staging:deploy
+  release:
+    docker:
+      - image: circleci/openjdk:11.0
+    working_directory: /tmp/workspace
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - run: |
+          echo 'Package: libassuan0' | sudo tee /etc/apt/preferences.d/libassuan0
+          echo 'Pin: release n=stretch-backports' | sudo tee -a /etc/apt/preferences.d/libassuan0
+          echo 'Pin-Priority: 1000' | sudo tee -a /etc/apt/preferences.d/libassuan0
+      - run: sudo apt-get install gpg gpg-agent
+      - run: echo "$GPG_SECRET_KEY" | base64 -d > /tmp/key
+      - run: echo "$GPG_PASSPHRASE" | gpg --batch --yes --passphrase-fd 0 --import /tmp/key
+      - run: rm /tmp/key
+      - run: sudo ln -s $(which gpg) /usr/local/bin/gpg2
+      - mvnw/circle:
+          command: package gpg:sign nexus-staging:deploy nexus-staging:release
 
 workflows:
   version: '2.1'
@@ -81,10 +97,19 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - publish:
+      - stage:
           requires:
             - build
-          context: bintray.com
+          context: sonatype.org
+          filters:
+            branches:
+              only: /.*/
+            tags:
+              ignore: /.*/
+      - release:
+          requires:
+            - build
+          context: sonatype.org
           filters:
             branches:
               ignore: /.*/

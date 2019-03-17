@@ -1,34 +1,37 @@
 package io.ayte.utility.value.kit.pair;
 
 import io.ayte.utility.value.api.AmplePair;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 @Data
-public class ImmutablePair<F, S> implements AmplePair<F, S> {
-    private final F first;
-    private final S second;
+@RequiredArgsConstructor(access = AccessLevel.PUBLIC)
+public class ImmutablePair<A, B> implements AmplePair<A, B> {
+    private final A first;
+    private final B second;
 
-    public ImmutablePair<F, S> setFirst(F value) {
+    public ImmutablePair<A, B> setFirst(A value) {
         return withFirst(value);
     }
 
     @Override
-    public AmplePair<F, S> setSecond(S value) {
+    public AmplePair<A, B> setSecond(B value) {
         return withSecond(value);
     }
 
     @Override
-    public <V> ImmutablePair<V, S> withFirst(V value) {
-        return new ImmutablePair<>(value, second);
+    public <A1> ImmutablePair<A1, B> withFirst(A1 first) {
+        return new ImmutablePair<>(first, second);
     }
 
     @Override
-    public <V> ImmutablePair<F, V> withSecond(V value) {
-        return new ImmutablePair<>(first, value);
+    public <B1> ImmutablePair<A, B1> withSecond(B1 second) {
+        return new ImmutablePair<>(first, second);
     }
 
     @Override
-    public ImmutablePair<S, F> reverse() {
+    public ImmutablePair<B, A> reverse() {
         return new ImmutablePair<>(second, first);
     }
 }

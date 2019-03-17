@@ -3,9 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>twill</artifactId>
+        <artifactId>ulysses</artifactId>
         <groupId>io.ayte</groupId>
-        <version>0.1.10</version>
+        <version>0.2.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -13,19 +13,8 @@
     <artifactId>parent</artifactId>
     <version>0.1.0</version>
     <packaging>pom</packaging>
-    <name>Ayte :: Utility :: Value :: Parent</name>
+    <name>Ayte :: Utility :: Value</name>
     <description>Parent POM for Value Objects utility artifacts</description>
-
-    <repositories>
-        <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>ayte.bintray.com</id>
-            <name>ayte.bintray.com</name>
-            <url>https://dl.bintray.com/ayte/maven</url>
-        </repository>
-    </repositories>
 
     <distributionManagement>
         <repository>
@@ -60,6 +49,14 @@
                         </manifestEntries>
                     </archive>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
