@@ -1,9 +1,7 @@
 # Ayte :: Utility :: Value
 
-![CircleCI branch](https://img.shields.io/circleci/project/github/ayte-io/java-utility-value/master.svg?style=flat-square)
-![Maven Central](https://img.shields.io/maven-central/v/io.ayte.utility/value.svg?style=flat-square)
-![SonarQube tech debt](https://img.shields.io/sonar/https/sonarcloud.io/io.ayte.utility:value/sqale_index.svg?style=flat-square)
-![Scrutinizer code quality](https://img.shields.io/scrutinizer/g/ayte-io/java-utility-value.svg?style=flat-square)
+![CircleCI branch](https://img.shields.io/circleci/project/github/ayte-io/java-utility-value.svg?style=flat-square)
+![Maven Central](https://img.shields.io/maven-central/v/io.ayte.utility.value/parent.svg?style=flat-square)
 
 This project contains utility value classes that are commonly used 
 (Pair, Trio, etc.) and helper classes with static methods to reduce
@@ -18,9 +16,6 @@ Project comes in two packages: API (just interfaces) and kit (actual
 implementations), Their coordinates are `io.ayte.utility.value:api` and
 `io.ayte.utility.value:kit` respectively. 
 
-As for now, artifacts are available only in 
-[Bintray Ayte repository](https://bintray.com/beta/#/ayte/maven/io.ayte.utility.value).
-
 ## Usage
 
 Project exposes basic `Pair` and `Trio` interfaces for two- and 
@@ -33,7 +28,7 @@ and `Trios` utility classes:
 AmpleTrio<Integer, Integer, Integer> alpha = Trios.immutable(1, 2, 3);
 AmpleTrio<Integer, Double, Integer> beta = alpha.mapSecond(x -> 1.0 / x);
 AmpleTrio<Integer, Double, Boolean> gamma = beta.withThird(true);
-AmpleTrio<Boolean, Integer, Double> delta = gamma.rotate();
+AmpleTrio<Boolean, Integer, Double> delta = gamma.rollForward();
 AmpleTrio<Double, Integer, Boolean> epsilon = delta.reverse();
 ```
 
