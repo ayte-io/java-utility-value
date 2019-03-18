@@ -13,8 +13,4 @@
     <artifactId>api</artifactId>
     <name>Ayte :: Utility :: Value :: API</name>
     <description>Value Object interfaces</description>
-
-    <properties>
-        <packaging.module-name>io.ayte.utility.value.api</packaging.module-name>
-    </properties>
 </project>

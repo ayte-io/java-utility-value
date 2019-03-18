@@ -14,10 +14,6 @@
     <name>Ayte :: Utility :: Value :: Kit</name>
     <description>Value Object implementations</description>
 
-    <properties>
-        <packaging.module-name>io.ayte.utility.value.kit</packaging.module-name>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>io.ayte.utility.value</groupId>

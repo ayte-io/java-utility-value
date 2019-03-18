@@ -16,14 +16,6 @@
     <name>Ayte :: Utility :: Value</name>
     <description>Parent POM for Value Objects utility artifacts</description>
 
-    <distributionManagement>
-        <repository>
-            <id>ayte.bintray.com</id>
-            <name>ayte.bintray.com</name>
-            <url>https://api.bintray.com/maven/ayte/maven/io.ayte.twill/;publish=1</url>
-        </repository>
-    </distributionManagement>
-
     <modules>
         <module>src/api</module>
         <module>src/kit</module>
@@ -45,7 +37,7 @@
                     <archive>
                         <manifestEntries>
                             <!--suppress MavenModelInspection -->
-                            <Automatic-Module-Name>${packaging.module-name}</Automatic-Module-Name>
+                            <Automatic-Module-Name>${packaging.automatic-module-name}</Automatic-Module-Name>
                         </manifestEntries>
                     </archive>
                 </configuration>
