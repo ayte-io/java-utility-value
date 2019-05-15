@@ -1,20 +1,31 @@
 # Ayte :: Utility :: Value
 
-![CircleCI branch](https://img.shields.io/circleci/project/github/ayte-io/java-utility-value.svg?style=flat-square)
-![Maven Central](https://img.shields.io/maven-central/v/io.ayte.utility.value/parent.svg?style=flat-square)
+[![CircleCI](https://img.shields.io/circleci/project/github/ayte-io/java-utility-value.svg?style=flat-square)](https://circleci.com/gh/ayte-io/java-utility-value)
+[![Maven Central](https://img.shields.io/maven-central/v/io.ayte.utility.value/parent.svg?style=flat-square)](https://mvnrepository.com/artifact/io.ayte.utility.value)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/ayte-io/java-utility-value.svg?style=flat-square)](https://codeclimate.com/github/ayte-io/java-utility-value)
+[![Sonar Tech Debt](https://img.shields.io/sonar/https/sonarcloud.io/io.ayte.utility.value:parent/tech_debt.svg?style=flat-square)](https://sonarcloud.io/dashboard?id=io.ayte.utility.value%3Aparent)
+
+[![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE-MIT)
+[![UPL-1.0 License](https://img.shields.io/badge/license-UPL&dash;1.0-brightgreen.svg?style=flat-square)](LICENSE-UPL-1.0)
 
 This project contains utility value classes that are commonly used 
 (Pair, Trio, etc.) and helper classes with static methods to reduce
 common boilerplate.
 
-See [Utility](https://github.com/ayte-io/java-utility) project for 
+See [utility](https://github.com/ayte-io/java-utility) project for 
 better understanding.
 
 ## Coordinates
 
 Project comes in two packages: API (just interfaces) and kit (actual
-implementations), Their coordinates are `io.ayte.utility.value:api` and
-`io.ayte.utility.value:kit` respectively. 
+implementations), Their coordinates are 
+[`io.ayte.utility.value:api`](https://mvnrepository.com/artifact/io.ayte.utility.value/api) 
+and
+[`io.ayte.utility.value:kit`](https://mvnrepository.com/artifact/io.ayte.utility.value/kit) 
+respectively. 
+
+Project is both java 8 compatible and exposes 
+`io.ayte.utility.value.api` and `io.ayte.utility.value.kit` modules.
 
 ## Usage
 

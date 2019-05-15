@@ -5,13 +5,13 @@
     <parent>
         <artifactId>ulysses</artifactId>
         <groupId>io.ayte</groupId>
-        <version>0.2.3</version>
+        <version>0.2.4</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.ayte.utility.value</groupId>
     <artifactId>parent</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Ayte :: Utility :: Value</name>
     <description>Parent POM for Value Objects utility artifacts</description>
@@ -49,19 +49,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>pl.project13.maven</groupId>
-                <artifactId>git-commit-id-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>execute</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>revision</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
